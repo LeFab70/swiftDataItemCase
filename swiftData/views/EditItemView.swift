@@ -8,11 +8,22 @@
 import SwiftUI
 
 struct EditItemView: View {
+    @Bindable var item: Item
+    @Environment(\.dismiss) var dismiss
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+      Form {
+          Section(header: Text("Edit Item")) {
+              TextField("Name", text: $item.name)
+              TextField("Details", text: $item.details)
+          }
+       Button("Save") {
+              dismiss()
+          }
+           
+        }
     }
 }
 
-#Preview {
-    EditItemView()
-}
+//#Preview {
+  // EditItemView(item:.init(backingData: .init(for: <#Item.Type#>)))
+//}
